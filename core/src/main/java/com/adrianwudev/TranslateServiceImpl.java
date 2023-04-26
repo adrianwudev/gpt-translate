@@ -22,6 +22,7 @@ public class TranslateServiceImpl implements TranslateService {
     private String translation;
     private final ChatGPTService chatGPTService;
 
+    // Change the annotation from @MockChatGPTService to @ChatGPTService when use the real API.
     public TranslateServiceImpl(@MockChatGPTService ChatGPTService chatGPTService) {
         this.chatGPTService = chatGPTService;
     }

@@ -12,3 +12,4 @@
     ```
    chatGPT.credentials.api.key = {YOUR-API-KEY}
     ```
+3. In file TranslateServiceImpl, change the annotation from qualifiers/@MockChatGPTService to qualifiers/@ChatGPTService when use the real API.
