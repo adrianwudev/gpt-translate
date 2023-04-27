@@ -6,7 +6,6 @@ import com.adrianwudev.config.ChatGPTConfig;
 import com.adrianwudev.models.ChatCompletionResponse;
 import com.adrianwudev.models.Choice;
 import com.adrianwudev.models.MessageRequestModel;
-import com.adrianwudev.qualifiers.ChatGPTHttpRequestSender;
 import com.adrianwudev.qualifiers.MockChatGPTService;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -22,11 +21,9 @@ import java.util.List;
 @Service
 @MockChatGPTService
 public class ChatGPTServiceMockImpl implements ChatGPTService {
-    private final HttpRequestSender httpRequestSender;
     private final ChatGPTConfig config;
 
-    public ChatGPTServiceMockImpl(@ChatGPTHttpRequestSender HttpRequestSender httpRequestSender, ChatGPTConfig config) {
-        this.httpRequestSender = httpRequestSender;
+    public ChatGPTServiceMockImpl(ChatGPTConfig config) {
         this.config = config;
     }
 

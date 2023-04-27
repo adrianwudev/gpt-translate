@@ -29,6 +29,16 @@ public class TranslateServiceImpl implements TranslateService {
 
     @Override
     public String translate(String source, String lang) {
+        if(source == null || lang == null){
+            log.error("source and lang can not be null");
+            throw new NullPointerException();
+        }
+
+        if (source.isBlank() || lang.isBlank()){
+            String errorMessage = "please enter the valid source and language which you want to translate to";
+            log.error(errorMessage);
+            return errorMessage;
+        }
 
         MessageRequestModel newMessage = new MessageRequestModel(USER, source);
         String presetContent = TransCommand

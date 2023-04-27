@@ -1,5 +1,6 @@
 package com.adrianwudev.config;
 
+import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.*;
 
@@ -9,7 +10,12 @@ import org.springframework.context.annotation.*;
   @PropertySource("classpath:config/chatGPT.properties"),
   @PropertySource("classpath:config/chatGPT-credentials.properties")
 })
+@NoArgsConstructor
 public class ChatGPTConfig {
+    public ChatGPTConfig(String GPT_MODEL, double TEMPERATURE){
+        this.GPT_MODEL = GPT_MODEL;
+        this.TEMPERATURE = TEMPERATURE;
+    }
     @Value("${chatGPT.credentials.api.key}")
     private String API_KEY;
 
@@ -27,10 +33,10 @@ public class ChatGPTConfig {
     }
 
     @Value("${chatGPT.api.temperature}")
-    private int TEMPERATURE;
+    private double TEMPERATURE;
 
     @Bean
-    public int getTemperature() {
+    public double getTemperature() {
         return TEMPERATURE;
     }
 }
